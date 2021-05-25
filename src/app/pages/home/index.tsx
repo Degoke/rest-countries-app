@@ -1,10 +1,11 @@
 import React from 'react'
+import PreviewBox from '../../components/preview-box'
 
-const HomePage = () => {
+const HomePage = (): React.ReactElement => {
   return (
-    <div>
-      <h1>Welcome</h1>
-    </div>
+    <section>
+      <PreviewBox />
+    </section>
   )
 }
 

@@ -1,10 +1,26 @@
 import React from 'react'
+import { ThemeType } from '../../../context/theme-context'
+import Wrapper from './style'
 
-const NavBar = (): React.ReactElement => {
+type NavBarProps = {
+  toggleTheme: () => void
+  theme: ThemeType
+}
+
+const NavBar = ({ toggleTheme, theme }: NavBarProps): React.ReactElement => {
   return (
-    <div>
-      <h1>navbar</h1>
-    </div>
+    <Wrapper>
+      <ul>
+        <li>
+          <h1>Where in the World?</h1>
+        </li>
+        <li>
+          <button type="button" onClick={toggleTheme}>
+            {theme === 'light' ? 'Light Mode' : 'Dark Mode'}
+          </button>
+        </li>
+      </ul>
+    </Wrapper>
   )
 }
 

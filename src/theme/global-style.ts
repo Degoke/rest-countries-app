@@ -10,12 +10,26 @@ const GlobalStyle = createGlobalStyle`
     body {
         font-family: 'Nunito Sans', sans-serif;
         background-color: ${(props) => props.theme.color.background};
-        color: ${(props) => props.theme.color.text}
+        color: ${(props) => props.theme.color.text};
+        font-size: ${(props) => props.theme.font.big};
     }
     
     a {
         text-decoration: none;
         color: inherit;
+    }
+
+    li {
+      list-style-type: none;
+    }
+
+    button {
+      font: inherit;
+
+      :hover {
+        cursor: pointer;
+        opacity: 0.6;
+      }
     }
 
     input {
