@@ -5,7 +5,7 @@ const PreviewBox = (): React.ReactElement => {
   return (
     <Wrapper>
       <div className="flag">
-        <img alt="country's flag" />
+        <img src="./logo512.png" alt="country's flag" />
       </div>
       <div className="details">
         <h2>Nigeria</h2>

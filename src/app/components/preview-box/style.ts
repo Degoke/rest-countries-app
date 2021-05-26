@@ -13,7 +13,7 @@ export default styled.div`
     flex: 0.5;
 
     img {
-      width: 100%;
+      width: 10%;
       height: 100%;
     }
   }
