@@ -32,8 +32,10 @@ const GlobalStyle = createGlobalStyle`
       }
     }
 
-    input {
-        color: ${(props) => props.theme.color.input}
+    input, select {
+        color: ${(props) => props.theme.color.input};
+        border: none;
+        outline: none;
     }
 `
 

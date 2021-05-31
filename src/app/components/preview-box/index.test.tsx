@@ -12,7 +12,7 @@ describe('preview box tests', () => {
   afterEach(cleanup)
 
   test('flag should be present', () => {
-    expect(screen.queryByAltText(/contry's flag/i)).toBeInTheDocument()
+    expect(screen.getByAltText(/flag/i)).toBeInTheDocument()
   })
 
   test('details should be present', () => {

@@ -8,7 +8,7 @@ import { darkTheme, lightTheme } from './theme/theme'
 
 export const provideTheme = (
   ui: React.ReactElement,
-  theme: ThemeType
+  theme: ThemeType = 'light'
 ): React.ReactElement => {
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
