@@ -6,15 +6,49 @@ export default styled.div`
 
   section {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 7vw;
     grid-row-gap: 3rem;
   }
+
+  @media all and (max-width: 1050px) {
+    section {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media all and (max-width: 740px) {
+    section {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media all and (max-width: 600px) {
+    .round {
+      display: none;
+    }
+  }
+
   .search {
     display: flex;
     justify-content: space-between;
     margin: 2rem auto;
   }
+
+  @media all and (max-width: 410px) {
+    section {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .search {
+      flex-direction: column;
+
+      select {
+        margin-top: 2rem;
+      }
+    }
+  }
+
   .buttons {
     margin: 2rem auto;
     display: flex;
@@ -30,6 +64,10 @@ export default styled.div`
     font-size: ${(props) => props.theme.font.medium};
     border-radius: ${(props) => props.theme.borderRadius};
     margin: auto 0.2rem;
+
+    @media all and (max-width: 600px) {
+      font-size: ${(props) => props.theme.font.small};
+    }
 
     :disabled {
       background-color: black;

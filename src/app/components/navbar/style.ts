@@ -23,5 +23,9 @@ export default styled.header`
 
   h1 {
     font-size: ${(props) => props.theme.font.big};
+
+    @media all and (max-width: 600px) {
+      font-size: ${(props) => props.theme.font.medium};
+    }
   }
 `

@@ -12,6 +12,10 @@ const GlobalStyle = createGlobalStyle`
         background-color: ${(props) => props.theme.color.background};
         color: ${(props) => props.theme.color.text};
         font-size: ${(props) => props.theme.font.big};
+
+        @media all and (max-width: 600px){
+          font-size: ${(props) => props.theme.font.medium};
+        }
     }
     
     a {

@@ -9,6 +9,10 @@ export default styled.a`
   font-size: ${(props) => props.theme.font.medium};
   border-radius: ${(props) => props.theme.borderRadius};
 
+  @media all and (max-width: 600px) {
+    font-size: ${(props) => props.theme.font.small};
+  }
+
   :hover {
     opacity: 0.6;
   }
