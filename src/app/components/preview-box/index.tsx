@@ -1,25 +1,30 @@
 import React from 'react'
+import { CountryInterface } from '../../../services/interfaces'
 import Wrapper from './style'
 
-const PreviewBox = (): React.ReactElement => {
+type PreviewProps = {
+  country: CountryInterface
+}
+
+const PreviewBox = ({ country }: PreviewProps): React.ReactElement => {
   return (
     <Wrapper>
       <div className="flag">
-        <img src="./logo512.png" alt="flag" />
+        <img src={country.flag} alt="flag" />
       </div>
       <div className="details">
-        <h2>Nigeria</h2>
+        <h2>{country.name}</h2>
         <p>
           <strong>Population: </strong>
-          1000
+          {country.population}
         </p>
         <p>
           <strong>Region: </strong>
-          Africa
+          {country.region}
         </p>
         <p>
           <strong>Capital: </strong>
-          Vibes
+          {country.capital}
         </p>
       </div>
     </Wrapper>

@@ -15,7 +15,7 @@ const FilterBox = ({ handleChange }: FilterBoxProps): React.ReactElement => {
           onChange={handleChange}
           defaultValue=""
         >
-          <option value="" selected disabled hidden>
+          <option value="" disabled hidden>
             Filter by Region
           </option>
           <option value="A">A</option>

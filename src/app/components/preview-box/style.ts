@@ -2,24 +2,21 @@ import styled from 'styled-components'
 
 export default styled.div`
   border-radius: ${(props) => props.theme.borderRadius};
-  display: flex;
-  flex-direction: column;
   background-color: ${(props) => props.theme.color.elements};
-  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 4px 0px rgba(59, 58, 82, 0.43);
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(59, 58, 82, 0.43);
+  -moz-box-shadow: 0px 4px 4px 0px rgba(59, 58, 82, 0.43);
+  height: 35vh;
 
   .flag {
-    flex: 0.5;
-
+    height: 50%;
     img {
-      width: 10%;
+      width: 100%;
       height: 100%;
     }
   }
 
   .details {
-    flex: 0.5;
     padding: 1rem;
   }
 

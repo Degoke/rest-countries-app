@@ -6,6 +6,7 @@ import { darkTheme, lightTheme } from '../theme/theme'
 import GlobalStyle from '../theme/global-style'
 import routes from '../routes/routes'
 import NavBar from './components/navbar'
+import AllCountriesProvider from '../services/all-countries'
 
 const App = (): React.ReactElement => {
   const [theme, setTheme] = useState<ThemeType>('light')
@@ -26,16 +27,18 @@ const App = (): React.ReactElement => {
         <GlobalStyle />
         <Router>
           <NavBar toggleTheme={toggleTheme} theme={theme} />
-          <Switch>
-            {routes.map((route) => (
-              <Route
-                key={route.name}
-                exact
-                path={route.path}
-                component={route.component}
-              />
-            ))}
-          </Switch>
+          <AllCountriesProvider>
+            <Switch>
+              {routes.map((route) => (
+                <Route
+                  key={route.name}
+                  exact
+                  path={route.path}
+                  component={route.component}
+                />
+              ))}
+            </Switch>
+          </AllCountriesProvider>
         </Router>
       </ThemeProvider>
     </ThemeContextProvider>
