@@ -9,7 +9,7 @@ const handleSearch = jest.fn()
 
 describe('searchbox tests', () => {
   beforeEach(() => {
-    render(provideTheme(<SearchBox handleSearch={handleSearch} />, 'light'))
+    render(provideTheme(<SearchBox searchForCountry={handleSearch} />, 'light'))
   })
 
   afterEach(cleanup)

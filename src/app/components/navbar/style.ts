@@ -8,7 +8,7 @@ export default styled.header`
   -moz-box-shadow: 0px 4px 4px 0px rgba(59, 58, 82, 0.43);
 
   ul {
-    width: 90%;
+    width: 85vw;
     margin: auto;
     display: flex;
     justify-content: space-between;

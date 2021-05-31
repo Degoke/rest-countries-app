@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { AllCountries } from '../../../services/all-countries'
 import FilterBox from '../../components/filter-box'
 import PreviewBox from '../../components/preview-box'
@@ -6,9 +6,8 @@ import SearchBox from '../../components/searchbox'
 import Wrapper from './style'
 
 const HomePage = (): React.ReactElement => {
-  const [region, setRegion] = useState<string>('')
-  const [tag, setTag] = useState<string>('')
-  const countries = useContext(AllCountries)
+  const { countries, filterCountries, searchForCountry } =
+    useContext(AllCountries)
 
   const numberPerPage = 12
 
@@ -17,6 +16,10 @@ const HomePage = (): React.ReactElement => {
   const pages = countries ? Math.round(countries.length / numberPerPage) : 0
 
   const [currentPage, setCurrentPage] = useState<number>(1)
+
+  useEffect(() => {
+    window.scrollTo({ behavior: 'smooth', top: 0 })
+  }, [currentPage])
 
   const goToNextPage = (): void => {
     setCurrentPage((page) => page + 1)
@@ -28,17 +31,6 @@ const HomePage = (): React.ReactElement => {
 
   const changePage = (e: React.MouseEvent<HTMLButtonElement>): void => {
     setCurrentPage(Number(e.currentTarget.textContent))
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
-    setRegion(e.target.value)
-  }
-
-  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>): void => {
-    e.preventDefault()
-    if (e.key === 'Enter') {
-      setTag(e.currentTarget.value)
-    }
   }
 
   const startIndex = currentPage * numberPerPage - numberPerPage
@@ -56,8 +48,9 @@ const HomePage = (): React.ReactElement => {
   return (
     <Wrapper>
       <div className="search">
-        <SearchBox handleSearch={handleSearch} />
-        <FilterBox handleChange={handleChange} />
+        {searchForCountry && <SearchBox searchForCountry={searchForCountry} />}
+
+        {filterCountries && <FilterBox filterCountries={filterCountries} />}
       </div>
       <section>
         {countries?.slice(startIndex, endIndex).map((country) => (
@@ -69,11 +62,21 @@ const HomePage = (): React.ReactElement => {
           type="button"
           onClick={goToPreviousPage}
           disabled={currentPage === 1}
+          className="pagination-button"
         >
           prev
         </button>
         {getPaginationGroup().map((item) => (
-          <button key={item} type="button" onClick={changePage}>
+          <button
+            key={item}
+            type="button"
+            onClick={changePage}
+            className={
+              currentPage === item
+                ? 'pagination-button round current'
+                : 'pagination-button round'
+            }
+          >
             {item}
           </button>
         ))}
@@ -81,13 +84,11 @@ const HomePage = (): React.ReactElement => {
           type="button"
           onClick={goToNextPage}
           disabled={currentPage === pages}
+          className="pagination-button"
         >
           next
         </button>
       </div>
-
-      <p>{region}</p>
-      <p>{tag}</p>
     </Wrapper>
   )
 }

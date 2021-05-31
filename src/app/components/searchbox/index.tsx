@@ -2,10 +2,12 @@ import React from 'react'
 import Wrapper from './style'
 
 type SearchBoxProps = {
-  handleSearch: (e: React.KeyboardEvent<HTMLInputElement>) => void
+  searchForCountry: (e: React.ChangeEvent<HTMLInputElement>) => Promise<void>
 }
 
-const SearchBox = ({ handleSearch }: SearchBoxProps): React.ReactElement => {
+const SearchBox = ({
+  searchForCountry,
+}: SearchBoxProps): React.ReactElement => {
   return (
     <Wrapper>
       <label htmlFor="search">
@@ -14,7 +16,7 @@ const SearchBox = ({ handleSearch }: SearchBoxProps): React.ReactElement => {
           name="search"
           id="search"
           placeholder="Search for a country..."
-          onKeyUp={handleSearch}
+          onChange={searchForCountry}
         />
       </label>
     </Wrapper>

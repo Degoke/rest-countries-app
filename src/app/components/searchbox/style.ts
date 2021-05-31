@@ -9,5 +9,6 @@ export default styled.form`
     background-color: ${(props) => props.theme.color.elements};
     font-size: ${(props) => props.theme.font.medium};
     border-radius: ${(props) => props.theme.borderRadius};
+    width: 25vw;
   }
 `

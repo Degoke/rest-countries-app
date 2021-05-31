@@ -6,7 +6,7 @@ export default styled.div`
   box-shadow: 0px 4px 4px 0px rgba(59, 58, 82, 0.43);
   -webkit-box-shadow: 0px 4px 4px 0px rgba(59, 58, 82, 0.43);
   -moz-box-shadow: 0px 4px 4px 0px rgba(59, 58, 82, 0.43);
-  height: 35vh;
+  height: 40vh;
 
   .flag {
     height: 50%;
