@@ -10,6 +10,26 @@ const HomePage = (): React.ReactElement => {
   const [tag, setTag] = useState<string>('')
   const countries = useContext(AllCountries)
 
+  const numberPerPage = 12
+
+  const availablePages = 10
+
+  const pages = countries ? Math.round(countries.length / numberPerPage) : 0
+
+  const [currentPage, setCurrentPage] = useState<number>(1)
+
+  const goToNextPage = (): void => {
+    setCurrentPage((page) => page + 1)
+  }
+
+  const goToPreviousPage = (): void => {
+    setCurrentPage((page) => page - 1)
+  }
+
+  const changePage = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    setCurrentPage(Number(e.currentTarget.textContent))
+  }
+
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     setRegion(e.target.value)
   }
@@ -21,6 +41,18 @@ const HomePage = (): React.ReactElement => {
     }
   }
 
+  const startIndex = currentPage * numberPerPage - numberPerPage
+  const endIndex = startIndex + numberPerPage
+
+  const getPaginationGroup = () => {
+    const start =
+      Math.floor((currentPage - 1) / availablePages) * availablePages
+    return new Array(availablePages)
+      .fill(0)
+      .map((_, idx) => start + idx + 1)
+      .filter((item) => item <= pages)
+  }
+
   return (
     <Wrapper>
       <div className="search">
@@ -28,12 +60,31 @@ const HomePage = (): React.ReactElement => {
         <FilterBox handleChange={handleChange} />
       </div>
       <section>
-        {countries
-          ?.filter((country, index) => index < 10)
-          .map((country) => (
-            <PreviewBox country={country} key={country.name} />
-          ))}
+        {countries?.slice(startIndex, endIndex).map((country) => (
+          <PreviewBox country={country} key={country.name} />
+        ))}
       </section>
+      <div className="buttons">
+        <button
+          type="button"
+          onClick={goToPreviousPage}
+          disabled={currentPage === 1}
+        >
+          prev
+        </button>
+        {getPaginationGroup().map((item) => (
+          <button key={item} type="button" onClick={changePage}>
+            {item}
+          </button>
+        ))}
+        <button
+          type="button"
+          onClick={goToNextPage}
+          disabled={currentPage === pages}
+        >
+          next
+        </button>
+      </div>
 
       <p>{region}</p>
       <p>{tag}</p>

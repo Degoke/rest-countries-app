@@ -32,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
       }
     }
 
-    input, select {
+    input, select, button {
         color: ${(props) => props.theme.color.input};
         border: none;
         outline: none;
