@@ -13,6 +13,7 @@ export default styled.div`
     img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
 
@@ -27,9 +28,5 @@ export default styled.div`
   h2 {
     font-size: ${(props) => props.theme.font.big};
     margin-bottom: 0.5rem;
-
-    @media all and (max-width: 600px) {
-      font-size: ${(props) => props.theme.font.medium};
-    }
   }
 `

@@ -10,10 +10,6 @@ export default styled.form`
     font-size: ${(props) => props.theme.font.medium};
     border-radius: ${(props) => props.theme.borderRadius};
     width: 25vw;
-
-    @media all and (max-width: 600px) {
-      font-size: ${(props) => props.theme.font.small};
-    }
   }
 
   @media all and (max-width: 600px) {

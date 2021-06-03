@@ -9,9 +9,9 @@ export const darkTheme: DefaultTheme = {
     input: 'hsl(0, 0%, 100%)',
   },
   font: {
-    big: '16px',
-    medium: '14px',
-    small: '12px',
+    big: 'clamp(14px, 1rem + 2vw, 16px)',
+    medium: 'clamp(12px, 1rem + 2vw, 14px)',
+    small: 'clamp(10px, 1rem + 2vw, 12px)',
   },
 }
 
@@ -24,8 +24,8 @@ export const lightTheme: DefaultTheme = {
     input: 'hsl(0, 0%, 52%)',
   },
   font: {
-    big: '16px',
-    medium: '14px',
-    small: '12px',
+    big: 'clamp(14px, 1rem + 2vw, 16px)',
+    medium: 'clamp(12px, 1rem + 2vw, 14px)',
+    small: 'clamp(10px, 1rem + 2vw, 12px)',
   },
 }

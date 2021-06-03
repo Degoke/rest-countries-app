@@ -6,21 +6,9 @@ export default styled.div`
 
   section {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-column-gap: 7vw;
     grid-row-gap: 3rem;
-  }
-
-  @media all and (max-width: 1050px) {
-    section {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  @media all and (max-width: 740px) {
-    section {
-      grid-template-columns: repeat(2, 1fr);
-    }
   }
 
   @media all and (max-width: 600px) {
@@ -34,12 +22,7 @@ export default styled.div`
     justify-content: space-between;
     margin: 2rem auto;
   }
-
   @media all and (max-width: 410px) {
-    section {
-      grid-template-columns: repeat(1, 1fr);
-    }
-
     .search {
       flex-direction: column;
 
@@ -64,10 +47,6 @@ export default styled.div`
     font-size: ${(props) => props.theme.font.medium};
     border-radius: ${(props) => props.theme.borderRadius};
     margin: auto 0.2rem;
-
-    @media all and (max-width: 600px) {
-      font-size: ${(props) => props.theme.font.small};
-    }
 
     :disabled {
       background-color: black;
