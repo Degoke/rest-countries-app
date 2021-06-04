@@ -46,10 +46,14 @@ export default styled.div`
     background-color: ${(props) => props.theme.color.elements};
     font-size: ${(props) => props.theme.font.medium};
     border-radius: ${(props) => props.theme.borderRadius};
-    margin: auto 0.2rem;
+    margin: auto 0.5rem;
 
     :disabled {
-      background-color: black;
+      background-color: #eeeeee;
+      :hover {
+        opacity: 1;
+        cursor: not-allowed;
+      }
     }
   }
 
@@ -58,9 +62,13 @@ export default styled.div`
     padding: 0.5rem;
     width: 2rem;
     height: 2rem;
+
+    :hover {
+      box-shadow: none;
+    }
   }
 
   .current {
-    background-color: black;
+    box-shadow: none;
   }
 `

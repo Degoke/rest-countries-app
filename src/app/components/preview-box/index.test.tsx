@@ -4,9 +4,34 @@ import { cleanup, render, screen } from '@testing-library/react'
 import { provideTheme } from '../../../setupTests'
 import PreviewBox from '.'
 
+const country = {
+  name: '',
+  topLevelDomain: [''],
+  capital: '',
+  region: '',
+  subregion: '',
+  population: '',
+  nativeName: '',
+  flag: '',
+  borders: [''],
+  cioc: '',
+  currencies: [
+    {
+      code: '',
+      name: '',
+      symbol: '',
+    },
+  ],
+  languages: [
+    {
+      name: '',
+    },
+  ],
+}
+
 describe('preview box tests', () => {
   beforeEach(() => {
-    render(provideTheme(<PreviewBox />, 'light'))
+    render(provideTheme(<PreviewBox country={country} />, 'light'))
   })
 
   afterEach(cleanup)

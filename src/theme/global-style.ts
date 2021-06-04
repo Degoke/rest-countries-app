@@ -4,7 +4,9 @@ const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
         padding: 0;
-        margin: 0
+        margin: 0;
+        transition: color 0.1s ease;
+        transition: background-color 0.4s ease;
     }
 
     body {
@@ -12,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
         background-color: ${(props) => props.theme.color.background};
         color: ${(props) => props.theme.color.text};
         font-size: ${(props) => props.theme.font.big};
+        overflow-x: hidden;
 
         @media all and (max-width: 600px){
           font-size: ${(props) => props.theme.font.medium};

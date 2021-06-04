@@ -12,13 +12,11 @@ const App = (): React.ReactElement => {
   const [theme, setTheme] = useState<ThemeType>('light')
 
   const toggleTheme = (): void => {
-    if (setTheme) {
-      if (theme === 'light') {
-        setTheme('dark')
-        return
-      }
-      setTheme('light')
+    if (theme === 'light') {
+      setTheme('dark')
+      return
     }
+    setTheme('light')
   }
 
   return (

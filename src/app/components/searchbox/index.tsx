@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+import { animateFromLeft } from '../../../animations/animate'
 import Wrapper from './style'
 
 type SearchBoxProps = {
@@ -8,8 +9,12 @@ type SearchBoxProps = {
 const SearchBox = ({
   searchForCountry,
 }: SearchBoxProps): React.ReactElement => {
+  const ref = useRef(null)
+  useEffect(() => {
+    animateFromLeft(ref.current)
+  }, [])
   return (
-    <Wrapper>
+    <Wrapper ref={ref}>
       <label htmlFor="search">
         <input
           type="search"

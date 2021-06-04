@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { CountryInterface } from '../../../services/interfaces'
 import Wrapper from './style'
+import { animateFromLeft } from '../../../animations/animate'
 
 type PreviewProps = {
   country: CountryInterface
 }
 
 const PreviewBox = ({ country }: PreviewProps): React.ReactElement => {
+  const ref = useRef(null)
+  useEffect(() => {
+    animateFromLeft(ref.current)
+  }, [])
   return (
-    <Wrapper>
+    <Wrapper ref={ref}>
       <div className="flag">
         <img src={country.flag} alt="flag" />
       </div>

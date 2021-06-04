@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
+import { animateFromRight } from '../../../animations/animate'
 import Wrapper from './style'
 
 type FilterBoxProps = {
@@ -6,8 +7,12 @@ type FilterBoxProps = {
 }
 
 const FilterBox = ({ filterCountries }: FilterBoxProps): React.ReactElement => {
+  const ref = useRef(null)
+  useEffect(() => {
+    animateFromRight(ref.current)
+  }, [])
   return (
-    <Wrapper>
+    <Wrapper ref={ref}>
       <label htmlFor="region">
         <select
           name="region"

@@ -1,4 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { AllCountries } from '../../../services/all-countries'
 import FilterBox from '../../components/filter-box'
 import PreviewBox from '../../components/preview-box'
@@ -6,6 +8,7 @@ import SearchBox from '../../components/searchbox'
 import Wrapper from './style'
 
 const HomePage = (): React.ReactElement => {
+  gsap.registerPlugin(ScrollTrigger)
   const { countries, filterCountries, searchForCountry } =
     useContext(AllCountries)
 
@@ -17,9 +20,25 @@ const HomePage = (): React.ReactElement => {
 
   const [currentPage, setCurrentPage] = useState<number>(1)
 
+  const ref = useRef(null)
+
   useEffect(() => {
     window.scrollTo({ behavior: 'smooth', top: 0 })
   }, [currentPage])
+
+  useEffect(() => {
+    gsap.from(ref.current, {
+      xPercent: 120,
+      opacity: 0,
+      duration: 2,
+      delay: 2,
+      ease: 'bounce',
+      scrollTrigger: {
+        trigger: ref.current!,
+        scrub: true,
+      },
+    })
+  }, [])
 
   const goToNextPage = (): void => {
     setCurrentPage((page) => page + 1)
@@ -57,7 +76,7 @@ const HomePage = (): React.ReactElement => {
           <PreviewBox country={country} key={country.name} />
         ))}
       </section>
-      <div className="buttons">
+      <div className="buttons" ref={ref}>
         <button
           type="button"
           onClick={goToPreviousPage}
