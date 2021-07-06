@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { createContext, useEffect, useState } from 'react'
 import { CountryInterface } from './interfaces'
@@ -111,6 +113,7 @@ const AllCountriesProvider = ({ children }: ContextProps) => {
     e: React.ChangeEvent<HTMLSelectElement>
   ): Promise<void> => {
     const data = await getByRegion(e.target.value)
+
     setCountries(data)
   }
 

@@ -8,6 +8,7 @@ import NavBar from './components/navbar'
 import AllCountriesProvider from '../services/all-countries'
 import Loader from './components/utils/loader'
 import ErrorBoundary from './components/utils/error-boundary'
+import DetailsPage from './pages/details'
 
 const HomePage = lazy(() => import('./pages/home'))
 
@@ -33,6 +34,11 @@ const App = (): React.ReactElement => {
               <Suspense fallback={<Loader />}>
                 <Switch>
                   <Route exact path="/" component={HomePage} />
+                  <Route
+                    exact
+                    path="/details/:country"
+                    component={DetailsPage}
+                  />
                 </Switch>
               </Suspense>
             </AllCountriesProvider>

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { CountryInterface } from '../../../services/interfaces'
 import Wrapper from './style'
 import { animateFromLeft } from '../../../animations/animate'
@@ -14,11 +15,15 @@ const PreviewBox = ({ country }: PreviewProps): React.ReactElement => {
   }, [])
   return (
     <Wrapper ref={ref}>
-      <div className="flag">
-        <img src={country.flag} alt="flag" />
-      </div>
+      <Link to="/details/nigeria">
+        <div className="flag">
+          <img src={country.flag} alt="flag" />
+        </div>
+      </Link>
       <div className="details">
-        <h2>{country.name}</h2>
+        <Link to="/details/nigeria">
+          <h2>{country.name}</h2>
+        </Link>
         <p>
           <strong>Population: </strong>
           {country.population}
